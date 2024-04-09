@@ -1,0 +1,37 @@
+services:
+  app:
+    depends_on:
+      - otelcol
+    container_name: app
+    image: spring-boot-otel-example.ccscshq
+    restart: always
+    environment:
+      - OTEL_SERVICE_NAME=servicename
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otelcol:4318
+      - OTEL_LOGS_EXPORTER=otlp
+      - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=dev,host.name=hostname,service.version=0.1.0
+    ports:
+      - "8080:8080"
+  otelcol:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otelcol
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=${DD_SITE}
+    restart: always
+    command: ["--config=/etc/otelcol-config.yml"]
+    volumes:
+      - ./otelcol-config.yaml:/etc/otelcol-config.yml
+    ports:
+      - "4317:4317" # OTLP over gRPC receiver
+      - "4318:4318" # OTLP over HTTP receiver
+      - "9464" # Prometheus exporter
+      - "8888" # metrics endpoint
+networks:
+  default:
+    name: spring-boot-otel-example
+    driver: bridge

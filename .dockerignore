@@ -1,0 +1,16 @@
+.vscode
+.gradle
+.git
+
+build
+
+.dockerignore
+.editorconfig
+.gitattributes
+.gitignore
+
+compose.yaml
+Dockerfile
+LICENSE
+README.md
+otelcol-config.yaml

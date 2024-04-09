@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-debug",
+    "ms-azuretools.vscode-docker",
+    "editorconfig.editorconfig",
+    "vscjava.vscode-java-pack",
+    "vscjava.vscode-gradle",
+    "naco-siren.gradle-language",
+    "oderwat.indent-rainbow",
+    "madhavd1.javadoc-tools",
+    "redhat.java",
+    "vscjava.vscode-lombok",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-emoji",
+    "davidanson.vscode-markdownlint",
+    "vscjava.vscode-maven",
+    "vscjava.vscode-java-dependency",
+    "mechatroner.rainbow-csv",
+    "arjun.swagger-viewer",
+    "vscjava.vscode-java-test",
+    "rangav.vscode-thunder-client",
+    "redhat.vscode-yaml",
+    "redhat.vscode-xml"
+  ]
+}
