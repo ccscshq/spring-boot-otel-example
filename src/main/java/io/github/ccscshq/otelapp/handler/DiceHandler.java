@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import io.github.ccscshq.otelapp.model.RollResult;
+import io.github.ccscshq.otelapp.model.DiceRollResult;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -20,10 +20,10 @@ public class DiceHandler {
 
   public Mono<ServerResponse> roll(ServerRequest req) {
     int val = random.nextInt(1, 7);
-    RollResult result = new RollResult(val);
+    DiceRollResult result = new DiceRollResult(val);
     String method = req.method().toString();
     String path = req.path();
     log.info("{} {}, result: {}", method, path, result.toString());
-    return ServerResponse.ok().body(Mono.just(result), RollResult.class);
+    return ServerResponse.ok().body(Mono.just(result), DiceRollResult.class);
   }
 }
